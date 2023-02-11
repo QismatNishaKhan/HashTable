@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace HashTable
 {
     public class MyMapNode<K, V>
-    {//UC1
+    {  //UC1
         //Find frequency of words
         private int size;
         private LinkedList<KeyValue<K, V>>[] items;
@@ -37,6 +37,42 @@ namespace HashTable
                 items[Position] = linkedlist;
             }
             return linkedlist;
+        }
+        //UC3
+        //Remove the words Avoidable
+        public V Get(K key)
+        {
+            int position = GetArrayPosition(key);
+
+            LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
+
+            foreach (KeyValue<K, V> item in linkedList)
+            {
+                if (item.Key.Equals(key))
+                {
+                    return item.Value;
+                }
+            }
+            return default(V);
+        }
+        public void Remove(K key)
+        {
+            int position = GetArrayPosition(key);
+            LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
+            bool itemFound = false;
+            KeyValue<K, V> foundItem = default(KeyValue<K, V>);
+            foreach (KeyValue<K, V> item in linkedList)
+            {
+                if (item.Key.Equals(key))
+                {
+                    itemFound = true;
+                    foundItem = item;
+                }
+            }
+            if (itemFound)
+            {
+                linkedList.Remove(foundItem);
+            }
         }
         public void Display()
         {

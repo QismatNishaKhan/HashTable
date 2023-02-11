@@ -4,7 +4,6 @@
     {
         static void Main(string[] args)
         {
-
             MyMapNode<string, int> hash = new MyMapNode<string, int>(6);
             string words = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
             string[] arr = words.Split(' ');
@@ -31,6 +30,13 @@
                 hash.Add(element, count);
             }
             Console.WriteLine("Frequency of the word");
+            hash.Display();
+            //remove words avoidable in paragraph
+            int freq = hash.Get("avoidable");
+            Console.WriteLine("Frequency of the word Avoidable: " + freq);
+            hash.Remove("avoidable");
+            freq = hash.Get("avoidable");
+            Console.WriteLine("Frequency of the word Avoidable after removing: " + freq);
             hash.Display();
         }
     }
