@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace HashTable
 {
     public class MyMapNode<K, V>
-    {
-        //UC1
+    {//UC1
         //Find frequency of words
         private int size;
         private LinkedList<KeyValue<K, V>>[] items;
